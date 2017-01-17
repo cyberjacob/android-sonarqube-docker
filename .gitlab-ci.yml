@@ -8,23 +8,27 @@ stages:
   - release
 
 variables:
+  DOCKER_DRIVER: overlay
   CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
   CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
 
 before_script:
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN gitlab.itvet.co.uk:4567
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
 
-build:
+.build: &build
   stage: build
   script:
-    - docker build --pull -t $CONTAINER_TEST_IMAGE .
-    - docker push $CONTAINER_TEST_IMAGE
+    - set -- $CI_BUILD_NAME
+    - docker build -f "Dockerfile.$1" .
 
-release-image:
+.release: &release
   stage: release
   script:
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker tag $CONTAINER_TEST_IMAGE $DOCKER_RELEASE_IMAGE
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME" -f "Dockerfile.$CI_BUILD_NAME" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME"
     - docker push $CONTAINER_RELEASE_IMAGE
   only:
     - master
+
+SDK_TOOLS-25.2.3-SDK-25-BUILD_TOOLS-25.0.2 test: *test
+SDK_TOOLS-25.2.3-SDK-25-BUILD_TOOLS-25.0.2: *release
