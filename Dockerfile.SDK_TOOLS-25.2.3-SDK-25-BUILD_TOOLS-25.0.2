@@ -56,7 +56,7 @@ RUN \
 
 ARG ANDROID_SDK_TOOLS=25.2.3
 RUN	wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/tools_r${ANDROID_SDK_TOOLS}-linux.zip
-UN	mkdir /opt/android \
+RUN	mkdir /opt/android \
 	&& mv android-sdk.zip /opt/android \
 	&& cd /opt/android \
 	&& unzip android-sdk.zip \
