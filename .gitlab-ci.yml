@@ -3,9 +3,6 @@ image: docker:latest
 services:
   - docker:dind
 
-variables:
-  DOCKER_DRIVER: overlay
-
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
 
