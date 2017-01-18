@@ -1,5 +1,13 @@
 FROM openjdk:8-jdk
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		unzip \
+		wget \
+		libqt5quick5 \
+&& rm -rf /var/lib/apt/lists/*
+
+FROM openjdk:8-jdk
+
 ARG ANDROID_SDK_TOOLS=25.2.3
 ARG ANDROID_COMPILE_SDK=25
 ARG ANDROID_BUILD_TOOLS=25.0.2
