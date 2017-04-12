@@ -8,9 +8,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 FROM openjdk:8-jdk
 
-ARG ANDROID_SDK_TOOLS=25.2.3
-ARG ANDROID_COMPILE_SDK=25
-ARG ANDROID_BUILD_TOOLS=25.0.2
+ARG ANDROID_SDK_TOOLS
+ARG ANDROID_COMPILE_SDK
+ARG ANDROID_BUILD_TOOLS
 
 RUN	wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/tools_r${ANDROID_SDK_TOOLS}-linux.zip
 RUN	mkdir /opt/android \

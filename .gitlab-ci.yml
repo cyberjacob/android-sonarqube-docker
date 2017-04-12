@@ -13,7 +13,7 @@ before_script:
   stage: build
   script:
     - set -- $CI_BUILD_NAME
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME" -f "Dockerfile.$1" .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME" -f "Dockerfile.template" --build-arg SDK_TOOLS=$SDK_TOOLS --build-arg SDK=$SDK --build-arg BUILD_TOOLS=$BUILD_TOOLS .
   except:
     - master
 
@@ -21,14 +21,31 @@ before_script:
 .build_and_deploy: &build_and_deploy
   stage: build
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME" -f "Dockerfile.$CI_BUILD_NAME" .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME" -f "Dockerfile.template" --build-arg SDK_TOOLS=$SDK_TOOLS --build-arg SDK=$SDK --build-arg BUILD_TOOLS=$BUILD_TOOLS .
     - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME"
   only:
     - master
 
 SDK_TOOLS-25.2.3-SDK-25-BUILD_TOOLS-25.0.2-test: *test_build
+  variables:
+    SDK_TOOLS: 25.2.3
+    SDK: 25
+    BUILD_TOOLS: 25.0.2
 SDK_TOOLS-25.2.3-SDK-25-BUILD_TOOLS-25.0.2: *build_and_deploy
+  variables:
+    SDK_TOOLS: 25.2.3
+    SDK: 25
+    BUILD_TOOLS: 25.0.2
 
 SDK_TOOLS-25.2.5-SDK-25-BUILD_TOOLS-25.0.2-test: *test_build
+  variables:
+    SDK_TOOLS: 25.2.5
+    SDK: 25
+    BUILD_TOOLS: 25.0.2
 SDK_TOOLS-25.2.5-SDK-25-BUILD_TOOLS-25.0.2: *build_and_deploy
+  variables:
+    SDK_TOOLS: 25.2.5
+    SDK: 25
+    BUILD_TOOLS: 25.0.2
+
 
