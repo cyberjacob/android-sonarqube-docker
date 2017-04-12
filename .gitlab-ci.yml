@@ -28,28 +28,28 @@ before_script:
 
 SDK_TOOLS-25.2.3-SDK-25-BUILD_TOOLS-25.0.2-test:
   variables:
-    SDK_TOOLS: 25.2.3
-    SDK: 25
-    BUILD_TOOLS: 25.0.2
+    SDK_TOOLS: "25.2.3"
+    SDK: "25"
+    BUILD_TOOLS: "25.0.2"
   <<: *test_build
 
 SDK_TOOLS-25.2.3-SDK-25-BUILD_TOOLS-25.0.2:
   variables:
-    SDK_TOOLS: 25.2.3
-    SDK: 25
-    BUILD_TOOLS: 25.0.2
+    SDK_TOOLS: "25.2.3"
+    SDK: "25"
+    BUILD_TOOLS: "25.0.2"
   <<: *build_and_deploy
 
 SDK_TOOLS-25.2.5-SDK-25-BUILD_TOOLS-25.0.2-test:
   variables:
-    SDK_TOOLS: 25.2.5
-    SDK: 25
-    BUILD_TOOLS: 25.0.2
+    SDK_TOOLS: "25.2.5"
+    SDK: "25"
+    BUILD_TOOLS: "25.0.2"
   <<: *test_build
 
 SDK_TOOLS-25.2.5-SDK-25-BUILD_TOOLS-25.0.2:
   variables:
-    SDK_TOOLS: 25.2.5
-    SDK: 25
-    BUILD_TOOLS: 25.0.2
+    SDK_TOOLS: "25.2.5"
+    SDK: "25"
+    BUILD_TOOLS: "25.0.2"
   <<: *build_and_deploy
