@@ -12,6 +12,10 @@ ARG ANDROID_SDK_TOOLS
 ARG ANDROID_COMPILE_SDK
 ARG ANDROID_BUILD_TOOLS
 
+RUN echo SDK Tools: $ANDROID_SDK_TOOLS
+RUN echo Compile SDK: $ANDROID_COMPILE_SDK
+RUN echo Build tools: $ANDROID_BUILD_TOOLS
+
 RUN	wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/tools_r${ANDROID_SDK_TOOLS}-linux.zip
 RUN	mkdir /opt/android \
 	&& mv android-sdk.zip /opt/android \
