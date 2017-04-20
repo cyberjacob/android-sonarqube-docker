@@ -13,6 +13,9 @@ before_script:
   stage: build
   script:
     - set -- $CI_BUILD_NAME
+    - echo $SDK_TOOLS
+    - echo $SDK
+    - echo $BUILD_TOOLS
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_NAME" -f "Dockerfile.template" --build-arg SDK_TOOLS=$SDK_TOOLS --build-arg SDK=$SDK --build-arg BUILD_TOOLS=$BUILD_TOOLS .
   except:
     - master
