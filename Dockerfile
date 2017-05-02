@@ -20,6 +20,7 @@ RUN     echo y | android --silent update sdk --no-ui --all --filter extra-google
 RUN     echo y | android --silent update sdk --no-ui --all --filter extra-google-m2repository
 
 RUN	echo y | android --silent update sdk --no-ui --all --filter android-22
+RUN	echo y | android --silent update sdk --no-ui --all --filter android-24
 RUN	echo y | android --silent update sdk --no-ui --all --filter android-25
 
 RUN	echo y | android --silent update sdk --no-ui --all --filter build-tools-25.0.3
