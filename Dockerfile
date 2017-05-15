@@ -24,3 +24,11 @@ RUN	echo y | android --silent update sdk --no-ui --all --filter android-24
 RUN	echo y | android --silent update sdk --no-ui --all --filter android-25
 
 RUN	echo y | android --silent update sdk --no-ui --all --filter build-tools-25.0.3
+
+COPY	build.gradle	/tmp/build.gradle
+COPY	gradlew		/tmp/gradlew
+COPY	gradle/wrapper/gradle-wrapper.jar		/tmp/gradle/wrapper/gradle-wrapper.jar
+COPY	gradle/wrapper/gradle-wrapper.properties	/tmp/gradle/wrapper/gradle-wrapper.properties
+
+RUN	chmod +x /tmp/gradlew
+RUN	/tmp/gradlew dependencies
