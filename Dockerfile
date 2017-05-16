@@ -31,4 +31,4 @@ COPY	gradle/wrapper/gradle-wrapper.jar		/tmp/gradle/wrapper/gradle-wrapper.jar
 COPY	gradle/wrapper/gradle-wrapper.properties	/tmp/gradle/wrapper/gradle-wrapper.properties
 
 RUN	chmod +x /tmp/gradlew
-RUN	/tmp/gradlew -b /tmp/build.gradle dependencies
+RUN	cd /tmp; ./gradlew -b build.gradle dependencies
