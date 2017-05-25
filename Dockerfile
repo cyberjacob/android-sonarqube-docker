@@ -25,5 +25,5 @@ RUN	echo y | android --silent update sdk --no-ui --all --filter android-25
 
 RUN	echo y | android --silent update sdk --no-ui --all --filter build-tools-25.0.3
 
-RUN	cd /tmp && wget https://github.com/bat-cha/dummy-android-gradle-project/archive/master.zip && unzip master.zip
-RUN	cd /tmp/dummy-android-gradle-project-master && ./gradlew -b build.gradle dependencies
+RUN	cd /tmp && wget https://github.com/cyberjacob/android-dummy/archive/master.zip && unzip master.zip
+RUN	cd /tmp/*-master && ./gradlew -b build.gradle dependencies
