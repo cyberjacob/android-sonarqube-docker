@@ -25,5 +25,8 @@ RUN	echo y | android --silent update sdk --no-ui --all --filter android-25
 
 RUN	echo y | android --silent update sdk --no-ui --all --filter build-tools-25.0.3
 
+RUN	echo y | /opt/android/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+RUN	echo y | /opt/android/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+
 RUN	cd /tmp && wget https://github.com/cyberjacob/android-dummy/archive/master.zip && unzip master.zip
 RUN	cd /tmp/*-master && ./gradlew -b build.gradle dependencies
